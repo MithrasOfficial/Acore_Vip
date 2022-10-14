@@ -16,7 +16,7 @@ Adjust the top part of the .lua file with the config flags.
 -  compile the core with ElunaLua module
 -  adjust config in this file
 -  add this script to ../lua_scripts/
--  give the players away to obtain the VIP item
+-  give the players a way to obtain the VIP item
 
 ## Player Usage:
 -  obtain the required item for VIP

@@ -13,7 +13,7 @@
 -- ADMIN GUIDE:  -  compile the core with ElunaLua module
 --               -  adjust config in this file
 --               -  add this script to ../lua_scripts/
---               -  give the players away to obtain the VIP item
+--               -  give the players a way to obtain the VIP item
 ------------------------------------------------------------------------------------------------
 -- PLAYER GUIDE: -  obtain the required item for VIP
 --               -  .vip activate
