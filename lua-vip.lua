@@ -108,8 +108,10 @@ local function ActivateVIP( player )
         AddIfNotHasValue( vipPlayers, player:GetAccountId() )
         player:SendBroadcastMessage("VIP mode was activated.")
         return true
+    else
+        player:SendBroadcastMessage("You do not own the required item.")
+        return true
     end
-    return
 end
 
 local function VIPTeleport( player )
@@ -141,6 +143,22 @@ local function GiveVIPKey( player )
         player:SendBroadcastMessage('You already own this item.')
     end
     return true
+end
+
+local function VIPmorph( player, displayId)
+    if not player then
+        return
+    end
+
+    if not displayId then
+        return
+    end
+
+    if HasValue( Config.morphs, displayId ) then
+        player:SetDisplayId( displayId )
+    else
+        player:SendBroadcastMessage( displayId .. ' is not an allowed model.')
+    end
 end
 
 local function Command( event, player, command, chatHandler )
@@ -185,19 +203,24 @@ local function Command( event, player, command, chatHandler )
     end
 
     if commandArray[2] == 'changerace' then
-        -- todo: allow the player to change race on next login
+        RunCommand( 'character changerace ' .. player:GetName() )
     end
 
     if commandArray[2] == 'changefaction' then
-        -- todo: allow the player to change faction on next login
+        RunCommand( 'character changefaction ' .. player:GetName() )
     end
 
     if commandArray[2] == 'customize' then
-        -- todo: allow the player to cutomize their character on next login
+        RunCommand( 'character customize ' .. player:GetName() )
     end
 
     if commandArray[2] == 'morph' then
         -- todo: allow the player to morph into an appearance listed in Config.morphs
+        if VIPMorph( player, commandArray[3] ) then
+            return true
+        else
+            return
+        end
     end
 
     if commandArray[2] == 'key' then
