@@ -138,7 +138,7 @@ local function GiveVIPKey( player )
     end
 
     if not player:HasItem( Config.keyItemEntry, 1, true ) then
-        player:Additem( Config.keyItemEntry, 1 )
+        player:AddItem( Config.keyItemEntry, 1 )
     else
         player:SendBroadcastMessage('You already own this item.')
     end
